@@ -1,7 +1,7 @@
 from typing import Dict
-from ..core.models import StatusEnum
-from .dtos import ProcessCsvInput, ProcessCsvOutput
-from .interfaces.data_processor import DataProcessor
+from backend.core.models import StatusEnum
+from backend.application.dtos import ProcessCsvInput, ProcessCsvOutput
+from backend.application.interfaces.data_processor import DataProcessor
 
 class ProcessCsvUseCase:
     """

@@ -2,8 +2,8 @@ import csv
 from io import StringIO
 from datetime import datetime
 from typing import List
-from ...core.models import BusinessRecord, StatusEnum
-from ...application.interfaces.data_processor import DataProcessor
+from backend.core.models import BusinessRecord, StatusEnum
+from backend.application.interfaces.data_processor import DataProcessor
 
 class CsvDataProcessor(DataProcessor):
     """

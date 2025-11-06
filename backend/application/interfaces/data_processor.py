@@ -1,5 +1,5 @@
 from typing import Protocol, List
-from ...core.models import BusinessRecord
+from backend.core.models import BusinessRecord
 
 class DataProcessor(Protocol):
     """
