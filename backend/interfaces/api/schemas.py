@@ -1,9 +1,6 @@
 from pydantic import BaseModel
 from typing import Dict
 
-class UploadCsvRequest(BaseModel):
-    csv_content: str
-
 class MetricsResponse(BaseModel):
     total_revenue: float
     mom_growth_rate: float
