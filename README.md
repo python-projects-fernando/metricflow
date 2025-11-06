@@ -76,14 +76,13 @@ To test it, send a POST request to `http://localhost:8000/api/upload-csv` with a
 
 ```bash
 # Backend setup
-cd backend
-python -m venv .venv
+python -m venv backend/.venv
 # On Windows:
-.venv\Scripts\activate
+backend/.venv\Scripts\activate
 # On macOS/Linux:
-source .venv/bin/activate
+source backend/.venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 uvicorn backend.interfaces.main:app --reload --port 8000
 ```
 
