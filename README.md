@@ -22,7 +22,7 @@ Just upload it. Get a clean, visual dashboard. Make decisions with confidence.
 ### How It Works
 
 1. **Prepare your data**  
-   Export a CSV with columns like: `date`, `amount`, `category` (e.g., "sale", "lead"), and `status`.
+   Export a CSV with columns like: `date`, `amount`, `category` (e.g., "sale", "lead"), and optionally `status`.
 
 2. **Upload it to MetricFlow**  
    One click. No sign-up. No setup.
@@ -49,12 +49,43 @@ If you’ve ever wasted hours formatting spreadsheets just to answer a simple qu
 
 ---
 
-### Try It Yourself
+### ▶Try It Locally (for developers)
 
-A live demo is coming soon!  
-For now, you can run it locally in under 5 minutes—see the [setup guide](#-local-setup) below if you're curious.
+Want to run it yourself? It takes less than 2 minutes:
 
-> **Note**: This project is a focused, production-grade example of how well-designed software can solve real business problems—without unnecessary complexity.
+```bash
+# Clone and enter the project
+git clone https://github.com/python-projects-fernando/metricflow
+cd metricflow
+
+# Install backend dependencies and start the API
+make install
+make run
+```
+
+> The API will be running at **http://localhost:8000**  
+> (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#-manual-setup))
+
+To test it, send a POST request to `http://localhost:8000/api/upload-csv` with a CSV file.
+
+> ⚠**Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code and simple UX can deliver real business value.
+
+---
+
+### Manual Setup (if you don’t have `make`)
+
+```bash
+# Backend setup
+cd backend
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On macOS/Linux:
+source .venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn backend.interfaces.main:app --reload --port 8000
+```
 
 ---
 
