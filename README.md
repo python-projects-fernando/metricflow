@@ -49,31 +49,56 @@ If you’ve ever wasted hours formatting spreadsheets just to answer a simple qu
 
 ---
 
-### ▶Try It Locally (for developers)
+### ▶ Try It Locally (for developers)
 
-Want to run it yourself? It takes less than 2 minutes:
+Want to run it yourself? It takes less than 5 minutes:
 
 ```bash
-# Clone and enter the project
-git clone https://github.com/python-projects-fernando/metricflow
+# Clone the repository
+git clone https://github.com/python-projects-fernando/metricflow.git
 cd metricflow
 
-# Install backend dependencies and start the API
+# Install and run the backend (FastAPI)
+cd backend
 make install
 make run
 ```
 
 > The API will be running at **http://localhost:8000**  
-> (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#-manual-setup))
+> (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#manual-setup))
 
-To test it, send a POST request to `http://localhost:8000/api/upload-csv` with a CSV file.
+In another terminal, install and run the frontend:
 
-> ⚠**Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code and simple UX can deliver real business value.
+```bash
+# Open a new terminal and go to frontend directory
+cd frontend
+npm install
+npm run dev
+```
+
+> The frontend will be available at **http://localhost:5173**  
+> (Requires Node.js 18+ and npm)
+
+The frontend automatically proxies API requests to the backend, so you can test the full application.
+
+> ⚠ **Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code and simple UX can deliver real business value.
 
 ---
 
-### Manual Setup (if you don’t have `make`)
+### Sample Data
 
+To quickly test MetricFlow, sample CSV files are included in the `samples/` directory:
+- `basic_sales.csv` - Simple sales and leads data
+- `multi_month.csv` - Data across multiple months to show MoM growth
+- `with_pending_sales.csv` - Includes pending sales (should not count toward revenue)
+
+You can use any of these files to test the dashboard functionality.
+
+---
+
+### Manual Setup (if you don’t have `make` or `npm`)
+
+#### Backend Setup (Python):
 ```bash
 # Backend setup
 python -m venv backend/.venv
@@ -84,6 +109,14 @@ source backend/.venv/bin/activate
 
 pip install -r backend/requirements.txt
 uvicorn backend.interfaces.main:app --reload --port 8000
+```
+
+#### Frontend Setup (Node.js):
+```bash
+# Frontend setup
+cd frontend
+npm install
+npm run dev
 ```
 
 ---
