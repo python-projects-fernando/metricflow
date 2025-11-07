@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import UploadZone from './components/UploadZone'
+import MetricsDashboard from './components/MetricsDashboard'
 import type { MetricsResponse } from './services/apiClient'
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           setIsLoading={setIsLoading}
         />
 
-        {/* Aqui virão os cards de métricas depois */}
+        {metrics && <MetricsDashboard metrics={metrics} />}
       </div>
     </div>
   )
