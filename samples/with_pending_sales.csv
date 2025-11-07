@@ -1,0 +1,5 @@
+date,amount,category,status
+2025-01-01,1000.0,sale,completed
+2025-01-02,500.0,sale,pending
+2025-01-03,0,lead,completed
+2025-01-04,200.0,sale,cancelled

@@ -3,7 +3,7 @@ export interface MetricsResponse {
   mom_growth_rate: number;
   average_ticket: number;
   total_leads: number;
-  monthly_revenue: Record<string, number>; // ex: {"2025-01": 1000, "2025-02": 1200}
+  monthly_revenue: Record<string, number>;
 }
 
 export const uploadCsv = async (file: File): Promise<MetricsResponse> => {
@@ -16,8 +16,10 @@ export const uploadCsv = async (file: File): Promise<MetricsResponse> => {
   });
 
   if (!response.ok) {
-    const errorData = await response.text();
-    throw new Error(`Upload failed: ${errorData}`);
+    const errorText = await response.text();
+    throw new Error(
+      errorText || `Upload failed with status ${response.status}`
+    );
   }
 
   return response.json();
