@@ -59,7 +59,7 @@ This is the easiest way to run the full application stack with a single command.
 
 ```bash
 # Clone the repository
-git clone https://github.com/python-projects-fernando/metricflow.git
+git clone https://github.com/python-projects-fernando/metricflow.git  
 cd metricflow
 
 # Build and run the full application (backend + frontend)
@@ -68,7 +68,9 @@ docker-compose up --build
 
 > The application will be available at **http://localhost**  
 > The API will be accessible at **http://localhost/api**  
-> (The Nginx proxy forwards requests from port 80 to the backend on port 8000)
+> (The Nginx proxy forwards requests from port 80 to the backend on port 8000)  
+> 
+> **Environment**: `BACKEND_HOST=backend` is set in `docker-compose.yml` for local proxying.  
 > 
 > **API Documentation**: The backend service runs independently at `http://localhost:8000`.  
 > Access the interactive API documentation at **http://localhost:8000/docs**.
