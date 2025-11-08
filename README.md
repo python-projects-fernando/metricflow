@@ -141,6 +141,20 @@ You can use any of these files to test the dashboard functionality.
 
 ---
 
+### Demo
+
+See how simple it is to turn your data into insights with MetricFlow.
+
+#### 1. Easy Upload
+![Upload Screen](screenshots/upload-screen.png)
+*Upload your CSV in seconds with a single click or drag and drop.*
+
+#### 2. Metrics Dashboard
+![Main Dashboard](screenshots/dashboard-main.png)
+*View your key metrics in a clean, professional dashboard.*
+
+---
+
 ### Built by Fernando Magalhães
 
 Fernando is the author of two practical guides for developers who care about **building systems that last**:
