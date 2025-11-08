@@ -22,8 +22,10 @@ const MetricCard: React.FC<MetricCardProps> = ({
     indigo: 'bg-indigo-50 text-indigo-800 border-indigo-200'
   }
 
+  const bgColorClass = colorClasses[color]
+
   return (
-    <div className="bg-white rounded-lg shadow p-4 border border-gray-100 hover:shadow-md transition-shadow">
+    <div className={`bg-white rounded-lg shadow p-4 border ${bgColorClass} hover:shadow-md transition-shadow`}>
       <div className="flex items-center justify-between">
         <div>
           <h3 className="text-sm font-medium text-gray-500">{title}</h3>

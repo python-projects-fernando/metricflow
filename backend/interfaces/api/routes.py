@@ -1,8 +1,8 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
 from io import StringIO
-from ...application.use_cases import ProcessCsvUseCase
-from ...application.dtos import ProcessCsvInput
-from ...infrastructure.file_processors import CsvDataProcessor
+from backend.application.use_cases import ProcessCsvUseCase
+from backend.application.dtos import ProcessCsvInput
+from backend.infrastructure.file_processors import CsvDataProcessor
 from .schemas import MetricsResponse
 
 router = APIRouter(prefix="/api", tags=["metrics"])

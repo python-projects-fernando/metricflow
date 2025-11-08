@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import UploadZone from './components/UploadZone'
 import MetricsDashboard from './components/MetricsDashboard'
 import type { MetricsResponse } from './services/apiClient'

@@ -51,48 +51,55 @@ If you’ve ever wasted hours formatting spreadsheets just to answer a simple qu
 
 ### ▶ Try It Locally (for developers)
 
-Want to run it yourself? It takes less than 5 minutes:
+Want to run it yourself? Choose your preferred method:
+
+#### Option 1: Run with Docker Compose (Recommended)
+
+This is the easiest way to run the full application stack with a single command.
 
 ```bash
 # Clone the repository
 git clone https://github.com/python-projects-fernando/metricflow.git
 cd metricflow
 
-# Install and run the backend (FastAPI)
-cd backend
-make install
-make run
+# Build and run the full application (backend + frontend)
+docker-compose up --build
 ```
 
-> The API will be running at **http://localhost:8000**  
-> (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#manual-setup))
+> The application will be available at **http://localhost**  
+> The API will be accessible at **http://localhost/api**  
+> (The Nginx proxy forwards requests from port 80 to the backend on port 8000)
+> 
+> **API Documentation**: The backend service runs independently at `http://localhost:8000`.  
+> Access the interactive API documentation at **http://localhost:8000/docs**.
 
-In another terminal, install and run the frontend:
+#### Option 2: Run Services Separately
 
-```bash
-# Open a new terminal and go to frontend directory
-cd frontend
-npm install
-npm run dev
-```
+If you prefer to run services individually for development:
 
-> The frontend will be available at **http://localhost:5173**  
-> (Requires Node.js 18+ and npm)
+1. **Backend (FastAPI)**:
+   ```bash
+   # Install and run the backend (FastAPI)
+   cd backend
+   make install
+   make run
+   ```
+   > The API will be running at **http://localhost:8000**  
+   > (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#manual-setup))
+
+2. **Frontend (React + Vite)**:
+   ```bash
+   # In another terminal, install and run the frontend
+   cd frontend
+   npm install
+   npm run dev
+   ```
+   > The frontend will be available at **http://localhost:5173**  
+   > (Requires Node.js 18+ and npm)
 
 The frontend automatically proxies API requests to the backend, so you can test the full application.
 
 > ⚠ **Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code and simple UX can deliver real business value.
-
----
-
-### Sample Data
-
-To quickly test MetricFlow, sample CSV files are included in the `samples/` directory:
-- `basic_sales.csv` - Simple sales and leads data
-- `multi_month.csv` - Data across multiple months to show MoM growth
-- `with_pending_sales.csv` - Includes pending sales (should not count toward revenue)
-
-You can use any of these files to test the dashboard functionality.
 
 ---
 
@@ -118,6 +125,17 @@ cd frontend
 npm install
 npm run dev
 ```
+
+---
+
+### Sample Data
+
+To quickly test MetricFlow, sample CSV files are included in the `samples/` directory:
+- `basic_sales.csv` - Simple sales and leads data
+- `multi_month.csv` - Data across multiple months to show MoM growth
+- `with_pending_sales.csv` - Includes pending sales (should not count toward revenue)
+
+You can use any of these files to test the dashboard functionality.
 
 ---
 
