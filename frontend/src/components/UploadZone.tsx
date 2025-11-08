@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import type { ChangeEvent } from 'react'
+import type {ChangeEvent} from 'react'
 import { uploadCsv, type MetricsResponse } from '../services/apiClient'
 
 interface UploadZoneProps {
@@ -10,45 +10,80 @@ interface UploadZoneProps {
   setIsLoading: (loading: boolean) => void
 }
 
-const UploadZone: React.FC<UploadZoneProps> = ({ 
-  onFileUpload, 
+const UploadZone: React.FC<UploadZoneProps> = ({
+  onFileUpload,
   onMetricsReceived,
   onUploadError,
-  isLoading, 
-  setIsLoading 
+  isLoading,
+  setIsLoading
 }) => {
   const [fileName, setFileName] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
+  // Função para lidar com o arquivo (comum ao clique e ao drag & drop)
+  const handleFile = (file: File) => {
+    if (file.type !== 'text/csv' && !file.name.endsWith('.csv')) {
+      onUploadError('Please select a CSV file.')
+      return
+    }
+    setFileName(file.name)
+    onFileUpload(file)
+
+    // Envia o arquivo para a API
+    setIsLoading(true)
+    uploadCsv(file)
+      .then(metrics => {
+        onMetricsReceived(metrics)
+      })
+      .catch(error => {
+        console.error('Upload error:', error)
+        onUploadError(error.message || 'Upload failed')
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
+
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      if (file.type !== 'text/csv' && !file.name.endsWith('.csv')) {
-        onUploadError('Please select a CSV file.')
-        return
-      }
-      setFileName(file.name)
-      onFileUpload(file)
-
-      // Envia o arquivo para a API
-      setIsLoading(true)
-      uploadCsv(file)
-        .then(metrics => {
-          onMetricsReceived(metrics)
-        })
-        .catch(error => {
-          console.error('Upload error:', error)
-          onUploadError(error.message || 'Upload failed')
-        })
-        .finally(() => {
-          setIsLoading(false)
-        })
+      handleFile(file)
     }
   }
 
   const triggerFileSelect = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click()
+    }
+  }
+
+  // Drag & Drop handlers
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault(); // Necessário para permitir o drop
+    e.stopPropagation();
+  }
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Aqui você pode mudar o estilo para indicar que o drop é aceito
+    // Ex: adicionar uma classe CSS ou mudar a borda
+  }
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Reverter o estilo
+  }
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const droppedFiles = e.dataTransfer.files;
+    if (droppedFiles.length > 0) {
+      const file = droppedFiles[0];
+      handleFile(file);
     }
   }
 
@@ -66,6 +101,10 @@ const UploadZone: React.FC<UploadZoneProps> = ({
       <div
         className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors cursor-pointer"
         onClick={triggerFileSelect}
+        onDragOver={handleDragOver}    // ← Adicione esta linha
+        onDragEnter={handleDragEnter}  // ← Adicione esta linha
+        onDragLeave={handleDragLeave}  // ← Adicione esta linha
+        onDrop={handleDrop}            // ← Adicione esta linha
       >
         <input
           type="file"
