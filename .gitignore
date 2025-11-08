@@ -28,6 +28,9 @@ __pycache__/
 htmlcov/
 .pytest_cache/
 
+# Ignore Docker-related cache and state files
+.docker/
+
 # Build/dist
 dist/
 build/
