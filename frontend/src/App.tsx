@@ -6,21 +6,24 @@ import type { MetricsResponse } from './services/apiClient'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [metrics, setMetrics] = useState<MetricsResponse | null>(null)
+  const [reportId, setReportId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const handleFileUpload = (file: File) => {
     console.log('File selected:', file.name)
-    setError(null) // Limpa erros anteriores
+    setError(null)
   }
 
   const handleMetricsReceived = (metrics: MetricsResponse) => {
     console.log('Metrics received:', metrics)
     setMetrics(metrics)
+    setReportId(metrics.report_id)
   }
 
   const handleUploadError = (errorMessage: string) => {
     setError(errorMessage)
     setMetrics(null)
+    setReportId(null)
   }
 
   return (
@@ -50,7 +53,7 @@ function App() {
           </div>
         )}
 
-        {metrics && <MetricsDashboard metrics={metrics} />}
+        {metrics && reportId && <MetricsDashboard metrics={metrics} reportId={reportId} />}
 
         {!metrics && !isLoading && !error && (
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
