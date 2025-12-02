@@ -22,3 +22,11 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
+@app.get("/")
+async def root():
+    return {"message": "MetricFlow API is running!"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
