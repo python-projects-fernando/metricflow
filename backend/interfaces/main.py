@@ -1,6 +1,10 @@
+from dotenv import load_dotenv
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.interfaces.api.routes import router
+
+load_dotenv()
 
 app = FastAPI(
     title="MetricFlow API",

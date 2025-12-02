@@ -28,8 +28,12 @@ __pycache__/
 htmlcov/
 .pytest_cache/
 
-# Ignore Docker-related cache and state files
+# Ignore Docker-related files
 .docker/
+docker-compose.dev.yml
+docker-compose.development.yml
+docker-compose.prod.yml
+docker-compose.production.yml
 
 # Build/dist
 dist/
@@ -43,6 +47,15 @@ build/
 # Logs
 *.log
 
+*.db
+*.db-journal
+fallback_test.db
+
+# Docker
+docker-compose.development.yml
+
+# drawio
+*.drawio.bkp
 
 # ==============================
 # Node.js / React (Frontend)

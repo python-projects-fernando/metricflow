@@ -7,3 +7,7 @@ class MetricsResponse(BaseModel):
     average_ticket: float
     total_leads: int
     monthly_revenue: Dict[str, float]
+    report_id: str
+
+    class Config:
+        from_attributes = True
