@@ -11,6 +11,7 @@ from backend.infrastructure.file_processors import CsvDataProcessor
 from .schemas import MetricsResponse
 from backend.infrastructure.config.redis_config import get_redis_client
 from ...infrastructure.file_processors.excel_report_generator import ExcelReportGenerator
+from ...infrastructure.file_processors.pdf_report_generator import PdfReportGenerator
 
 router = APIRouter(prefix="/api", tags=["metrics"])
 
@@ -24,6 +25,9 @@ def get_redis() -> redis.Redis:
 
 def get_excel_generator() -> ExcelReportGenerator:
     return ExcelReportGenerator()
+
+def get_pdf_generator() -> PdfReportGenerator:
+    return PdfReportGenerator()
 
 @router.post("/upload-csv", response_model=MetricsResponse)
 async def upload_csv(
@@ -99,5 +103,39 @@ async def export_excel(
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         headers={
             "Content-Disposition": f"attachment; filename=metricflow_report_{report_id}.xlsx"
+        }
+    )
+
+
+
+@router.get("/export/pdf/{report_id}")
+async def export_pdf(
+    report_id: str,
+    redis_client: redis.Redis = Depends(get_redis),
+    pdf_generator: PdfReportGenerator = Depends(get_pdf_generator)
+):
+    try:
+        uuid.UUID(report_id)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid report ID format")
+
+    cached_data = redis_client.get(report_id)
+    if not cached_data:
+        raise HTTPException(status_code=404, detail="Report data not found or expired")
+
+    try:
+        cached_dict = json.loads(cached_data)
+        output_dto = ProcessCsvOutput(**cached_dict)
+    except Exception as e:
+        print(f"Error deserializing cached data for ID {report_id}: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving report data")
+
+    pdf_buffer: BytesIO = pdf_generator.generate_report(output_dto)
+
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f"attachment; filename=metricflow_report_{report_id}.pdf"
         }
     )
