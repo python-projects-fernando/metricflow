@@ -2,6 +2,7 @@
 
 **Turn your business data into clear insights—in seconds.**  
 No spreadsheets. No complex dashboards. Just upload a CSV and see what matters.
+**Export reports as PDF or Excel with 1 click.**
 
 ---
 
@@ -15,26 +16,27 @@ Yet you need to know:
 
 **MetricFlow gives you instant answers** from the data you already have—usually sitting in a simple CSV file.
 
-Just upload it. Get a clean, visual dashboard. Make decisions with confidence.
+Just upload it. Get a clean, visual dashboard. **Export professional reports.** Make decisions with confidence.
 
 ---
 
 ### How It Works
 
-1. **Prepare your data**  
-   Export a CSV with columns like: `date`, `amount`, `category` (e.g., "sale", "lead"), and optionally `status`.
+1.  **Prepare your data**  
+    Export a CSV with columns like: `date`, `amount`, `category` (e.g., "sale", "lead"), and optionally `status`.
 
-2. **Upload it to MetricFlow**  
-   One click. No sign-up. No setup.
+2.  **Upload it to MetricFlow**  
+    One click. No sign-up. No setup.
 
-3. **See your key metrics instantly**  
-   - Total revenue  
-   - Month-over-month growth  
-   - Average transaction value  
-   - New leads over time  
-   - Revenue trend chart
+3.  **See your key metrics instantly**  
+    - Total revenue  
+    - Month-over-month growth  
+    - Average transaction value  
+    - New leads over time  
+    - Revenue trend chart
+    - **Export full report as PDF or Excel with 1 click**
 
-That’s it. No training. No onboarding. Just clarity.
+That’s it. No training. No onboarding. Just clarity and **actionable reports**.
 
 ---
 
@@ -43,7 +45,7 @@ That’s it. No training. No onboarding. Just clarity.
 - Founders validating their business model  
 - Consultants tracking client results  
 - Agencies monitoring campaign performance  
-- Freelancers who need quick visibility—without the noise
+
 
 If you’ve ever wasted hours formatting spreadsheets just to answer a simple question… **MetricFlow is your shortcut.**
 
@@ -51,57 +53,75 @@ If you’ve ever wasted hours formatting spreadsheets just to answer a simple qu
 
 ### ▶ Try It Locally (for developers)
 
-Want to run it yourself? Choose your preferred method:
-
-#### Option 1: Run with Docker Compose (Recommended)
+#### **Option 1: Run with Docker Compose (Recommended)**
 
 This is the easiest way to run the full application stack with a single command.
 
-```bash
-# Clone the repository
-git clone https://github.com/python-projects-fernando/metricflow.git  
-cd metricflow
+1.  **Copy the example compose file:**
+    ```bash
+    # Clone the repository
+    git clone https://github.com/python-projects-fernando/metricflow.git
+    cd metricflow
 
-# Build and run the full application (backend + frontend)
-docker-compose up --build
-```
+    # Copy the example compose file to the default name
+    cp docker-compose.example.yml docker-compose.yml
+    ```
+2.  **Build and run the full application (backend + frontend + redis):**
+    ```bash
+    docker-compose -f docker-compose.yml up --build
+    ```
 
-> The application will be available at **http://localhost**  
-> The API will be accessible at **http://localhost/api**  
-> (The Nginx proxy forwards requests from port 80 to the backend on port 8000)  
+> The **frontend** will be available at **http://localhost:5173**  
+> The **backend** API will be running at **http://localhost:8000**  
+> (Requires Docker and Docker Compose)  
 > 
-> **Environment**: `BACKEND_HOST=backend` is set in `docker-compose.yml` for local proxying.  
+> **Environment**: `VITE_API_BASE_URL=http://localhost:8000/api` is set in `docker-compose.yml` for the frontend.  
 > 
-> **API Documentation**: The backend service runs independently at `http://localhost:8000`.  
-> Access the interactive API documentation at **http://localhost:8000/docs**.
+> **API Documentation**: Access the interactive API documentation at **http://localhost:8000/docs**.
 
-#### Option 2: Run Services Separately
+#### **Option 2: Run Services Separately**
 
 If you prefer to run services individually for development:
 
-1. **Backend (FastAPI)**:
-   ```bash
-   # Install and run the backend (FastAPI)
-   cd backend
-   make install
-   make run
-   ```
-   > The API will be running at **http://localhost:8000**  
-   > (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#manual-setup))
+1.  **Backend (FastAPI)**:
+    1.  Navigate to the backend directory:
+        ```bash
+        cd backend
+        ```
+    2.  **Copy the example environment file and configure your settings (like Redis host):**
+        ```bash
+        cp .env.example .env
+        # Edit .env if needed (e.g., set REDIS_HOST if Redis is not on localhost)
+        ```
+    3.  Install and run the backend:
+        ```bash
+        make install # Requires Python 3.9+ and make
+        make run
+        ```
+    > The API will be running at **http://localhost:8000**  
+    > (Requires Python 3.9+ and `make`. On Windows without `make`, see [manual setup](#manual-setup))
 
-2. **Frontend (React + Vite)**:
-   ```bash
-   # In another terminal, install and run the frontend
-   cd frontend
-   npm install
-   npm run dev
-   ```
-   > The frontend will be available at **http://localhost:5173**  
-   > (Requires Node.js 18+ and npm)
+2.  **Frontend (React + Vite)**:
+    1.  Open a new terminal and navigate to the frontend directory:
+        ```bash
+        cd frontend
+        ```
+    2.  **Copy the example environment file and configure the API URL:**
+        ```bash
+        cp .env.example .env
+        # Edit .env to set VITE_API_BASE_URL (default is http://localhost:8000/api)
+        ```
+    3.  Install and run the frontend:
+        ```bash
+        npm install # Requires Node.js 18+ and npm
+        npm run dev
+        ```
+    > The frontend will be available at **http://localhost:5173**  
+    > The frontend uses `VITE_API_BASE_URL` from `.env` to connect to the backend.
 
-The frontend automatically proxies API requests to the backend, so you can test the full application.
+The frontend automatically uses the configured API URL to communicate with the backend. Ensure Redis is running (e.g., `docker run -p 6379:6379 redis:latest`).
 
-> ⚠ **Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code and simple UX can deliver real business value.
+> ⚠ **Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code, simple UX, and **instant report generation** can deliver real business value.
 
 ---
 
@@ -137,21 +157,7 @@ To quickly test MetricFlow, sample CSV files are included in the `samples/` dire
 - `multi_month.csv` - Data across multiple months to show MoM growth
 - `with_pending_sales.csv` - Includes pending sales (should not count toward revenue)
 
-You can use any of these files to test the dashboard functionality.
-
----
-
-### Demo
-
-See how simple it is to turn your data into insights with MetricFlow.
-
-#### 1. Easy Upload
-![Upload Screen](screenshots/upload-screen.png)
-*Upload your CSV in seconds with a single click or drag and drop.*
-
-#### 2. Metrics Dashboard
-![Main Dashboard](screenshots/dashboard-main.png)
-*View your key metrics in a clean, professional dashboard.*
+You can use any of these files to test the dashboard functionality and **export features**.
 
 ---
 
@@ -159,8 +165,8 @@ See how simple it is to turn your data into insights with MetricFlow.
 
 Fernando is the author of two practical guides for developers who care about **building systems that last**:
 
-- **[SOLID Principles in Python](https://a.co/d/4Zk6KGS)**: Learn to write maintainable, testable code through a real-world Clean Architecture project—no theory without practice.  
-- **[Software Engineering – Essential Principles](https://a.co/d/fkU4hXH)**: A no-fluff guide to modern software craftsmanship, trusted by beginners and experienced engineers alike.
+- **[SOLID Principles in Python](https://a.co/d/4Zk6KGS  )**: Learn to write maintainable, testable code through a real-world Clean Architecture project—no theory without practice.  
+- **[Software Engineering – Essential Principles](https://a.co/d/fkU4hXH  )**: A no-fluff guide to modern software craftsmanship, trusted by beginners and experienced engineers alike.
 
 MetricFlow reflects that same philosophy: **simple on the surface, solid underneath**.
 
