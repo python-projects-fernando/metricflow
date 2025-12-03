@@ -121,7 +121,7 @@ If you prefer to run services individually for development:
 
 The frontend automatically uses the configured API URL to communicate with the backend. Ensure Redis is running (e.g., `docker run -p 6379:6379 redis:latest`).
 
-> ⚠ **Note**: This is a focused, production-grade reference implementation—not a full SaaS. It demonstrates how clean code, simple UX, and **instant report generation** can deliver real business value.
+> ⚠ **Note**: This is a focused, production-grade reference implementation, not a full SaaS. It demonstrates how clean code, simple UX, and **instant report generation** can deliver real business value.
 
 ---
 
