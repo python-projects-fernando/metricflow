@@ -4,7 +4,7 @@
   <img src="docs/images/metricflow-logo.png" alt="MetricFlow Logo" width="200" height="200">
 </p>
 
-**Turn your business data into clear insights—in seconds.**  
+**Turn your business data into clear insights in seconds.**  
 No spreadsheets. No complex dashboards. Just upload a CSV and see what matters.
 **Export reports as PDF or Excel with 1 click.**
 
@@ -12,13 +12,13 @@ No spreadsheets. No complex dashboards. Just upload a CSV and see what matters.
 
 ### What It Solves for You
 
-You’re busy running your business—not analyzing data.  
+You’re busy running your business, not analyzing data.  
 Yet you need to know:  
 - Are sales growing month over month?  
 - What’s your average deal size?  
 - How many new leads came in last week?
 
-**MetricFlow gives you instant answers** from the data you already have—usually sitting in a simple CSV file.
+**MetricFlow gives you instant answers** from the data you already have, usually sitting in a simple CSV file.
 
 Just upload it. Get a clean, visual dashboard. **Export professional reports.** Make decisions with confidence.
 
@@ -67,7 +67,26 @@ Ready to streamline your scheduling process?
 ---
 **[https://fmbyteshiftsoftware.com/](https://fmbyteshiftsoftware.com/)**<br>
 **[Contact for Setup](mailto:contact@fmbyteshiftsoftware.com)** *(Schedule a quick setup call)*<br>
+
 ---
+## Architecture & Deployment
+
+### Application Architecture
+
+This diagram illustrates the high-level structure of the MetricFlow application.
+
+![MetricFlow Frontend Architecture](docs/diagrams/architecture/frontend-architecture-diagram.png) 
+
+![MetricFlow Backend Architecture](docs/diagrams/architecture/backend-architecture-diagram.png) 
+
+### Deployment Flow (AWS)
+
+This diagram shows how the application components are deployed and interact on AWS.
+
+![MetricFlow Deployment on AWS](docs/diagrams/deployment/aws-deployment-architecture.png) 
+
+---
+
 ### ▶ Try It Locally (for developers)
 
 #### **Option 1: Run with Docker Compose (Recommended)**
