@@ -1,0 +1,60 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram name="Página-1" id="XxDmPBCG0cKNG-R0hXuO">
+    <mxGraphModel dx="1426" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-1" value="Containers on EC2" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="370" width="340" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-2" value="User Browser" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="144" y="10" width="154" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-3" value="S3 Static Website" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="129" y="138" width="184" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-4" value="EC2 Instance (Port 80)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="112" y="266" width="219" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-5" value="FastAPI Backend&#xa;Docker Container" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="129" y="395" width="184" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-6" value="Redis Docker Container" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="65" y="559" width="226" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-7" value="Amazon ECR&#xa;metricflow-backend-repo" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="405" y="547" width="242" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-8" value="Loads React App" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="CmZJopWfUWNlfxKS2gjh-2" target="CmZJopWfUWNlfxKS2gjh-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-9" value="Fetches /api/..." style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="CmZJopWfUWNlfxKS2gjh-3" target="CmZJopWfUWNlfxKS2gjh-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-10" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="CmZJopWfUWNlfxKS2gjh-4" target="CmZJopWfUWNlfxKS2gjh-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-11" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.38;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="CmZJopWfUWNlfxKS2gjh-5" target="CmZJopWfUWNlfxKS2gjh-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="178" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CmZJopWfUWNlfxKS2gjh-12" value="Image pulled from" style="curved=1;startArrow=none;endArrow=block;exitX=0.62;exitY=1;entryX=0;entryY=0.05;rounded=0;" edge="1" parent="1" source="CmZJopWfUWNlfxKS2gjh-5" target="CmZJopWfUWNlfxKS2gjh-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="264" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
