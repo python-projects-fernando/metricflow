@@ -1,5 +1,9 @@
 # MetricFlow
 
+<p align="center">
+  <img src="docs/images/metricflow-logo.png" alt="MetricFlow Logo" width="200" height="200">
+</p>
+
 **Turn your business data into clear insights—in seconds.**  
 No spreadsheets. No complex dashboards. Just upload a CSV and see what matters.
 **Export reports as PDF or Excel with 1 click.**
@@ -46,11 +50,24 @@ That’s it. No training. No onboarding. Just clarity and **actionable reports**
 - Consultants tracking client results  
 - Agencies monitoring campaign performance  
 
-
+---
 If you’ve ever wasted hours formatting spreadsheets just to answer a simple question… **MetricFlow is your shortcut.**
 
 ---
 
+> ⚠ **Note**: This is a focused, production-grade reference implementation, not a full SaaS. It demonstrates how clean code, simple UX, and **instant report generation** can deliver real business value.
+
+---
+
+## Experience the Flow
+
+Ready to streamline your scheduling process?  
+**[Watch Demo Video](https://youtu.be/oX7npLVFjX4?si=4Gpg5dFkOjp41AZ4)** *(Demonstrates the application flow)*<br>
+**[Live Demo](http://metricflow-frontend-bucket.s3-website-us-east-1.amazonaws.com/)** *(Application running on AWS)*<br>
+---
+**[https://fmbyteshiftsoftware.com/](https://fmbyteshiftsoftware.com/)**<br>
+**[Contact for Setup](mailto:contact@fmbyteshiftsoftware.com)** *(Schedule a quick setup call)*<br>
+---
 ### ▶ Try It Locally (for developers)
 
 #### **Option 1: Run with Docker Compose (Recommended)**
@@ -120,8 +137,6 @@ If you prefer to run services individually for development:
     > The frontend uses `VITE_API_BASE_URL` from `.env` to connect to the backend.
 
 The frontend automatically uses the configured API URL to communicate with the backend. Ensure Redis is running (e.g., `docker run -p 6379:6379 redis:latest`).
-
-> ⚠ **Note**: This is a focused, production-grade reference implementation, not a full SaaS. It demonstrates how clean code, simple UX, and **instant report generation** can deliver real business value.
 
 ---
 
