@@ -5,7 +5,7 @@
 </p>
 
 **Turn your business data into clear insights in seconds.**  
-No spreadsheets. No complex dashboards. Just upload a CSV and see what matters.
+No complex dashboards or spreadsheets. Just upload a CSV and see what matters.
 **Export reports as PDF or Excel with 1 click.**
 
 ---
@@ -61,7 +61,7 @@ If you’ve ever wasted hours formatting spreadsheets just to answer a simple qu
 
 ## Experience the Flow
 
-Ready to turn your business data into clear insights in seconds? 
+Ready to turn your business data into clear insights in seconds? <br>
 **[Watch Demo Video](https://youtu.be/oX7npLVFjX4?si=4Gpg5dFkOjp41AZ4)** *(Demonstrates the application flow)*<br>
 **[Live Demo](http://metricflow-frontend-bucket.s3-website-us-east-1.amazonaws.com/)** *(Application running on AWS)*<br>
 ---
@@ -199,7 +199,7 @@ You can use any of these files to test the dashboard functionality and **export 
 
 Fernando is the author of two practical guides for developers who care about **building systems that last**:
 
-- **[SOLID Principles in Python](https://a.co/d/4Zk6KGS  )**: Learn to write maintainable, testable code through a real-world Clean Architecture project—no theory without practice.  
+- **[SOLID Principles in Python](https://a.co/d/4Zk6KGS  )**: Learn to write maintainable, testable code through a real-world Clean Architecture project, not just theory but practice. 
 - **[Software Engineering – Essential Principles](https://a.co/d/fkU4hXH  )**: A no-fluff guide to modern software craftsmanship, trusted by beginners and experienced engineers alike.
 
 MetricFlow reflects that same philosophy: **simple on the surface, solid underneath**.
