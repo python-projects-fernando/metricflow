@@ -61,7 +61,7 @@ If you’ve ever wasted hours formatting spreadsheets just to answer a simple qu
 
 ## Experience the Flow
 
-Ready to streamline your scheduling process?  
+Ready to turn your business data into clear insights in seconds? 
 **[Watch Demo Video](https://youtu.be/oX7npLVFjX4?si=4Gpg5dFkOjp41AZ4)** *(Demonstrates the application flow)*<br>
 **[Live Demo](http://metricflow-frontend-bucket.s3-website-us-east-1.amazonaws.com/)** *(Application running on AWS)*<br>
 ---
