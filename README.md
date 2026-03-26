@@ -1,7 +1,7 @@
 # MetricFlow
 
 <p align="center">
-  <img src="docs/images/metricflow-logo.png" alt="MetricFlow Logo" width="200" height="200">
+  <img src="https://assets.zyrosite.com/AQEZkE43zXtgRjLB/shopflow-logo-0WiqZZ9KsHWBuEpY.png" alt="MetricFlow Logo" width="300">
 </p>
 
 **Turn your business data into clear insights in seconds.**  
